@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-09-24T17:38:32Z" product-name="sms77typo3">
+        <header />
+        <body>
+            <trans-unit id="apiKey" resname="apiKey">
+                <source>API Key: Required for sending messages</source>
+            </trans-unit>
+
+            <trans-unit id="debug" resname="debug">
+                <source>Debug: If activated no SMS will be sent or calculated</source>
+            </trans-unit>
+
+            <trans-unit id="delay" resname="delay">
+                <source>Delay: Delay dispatch. Expects an UNIX timestamp or date string with the format format yyyy-mm-dd hh:ii</source>
+            </trans-unit>
+
+            <trans-unit id="details" resname="details">
+                <source>Details: Shows numerous details to the sent  Handy for debugging</source>
+            </trans-unit>
+
+            <trans-unit id="foreign_id" resname="foreign_id">
+                <source>Foreign ID: Custom ID to return back in DLR callbacks etc. Max. 64 chars, allowed characters: a-z, A-Z, 0-9, .-_@</source>
+            </trans-unit>
+
+            <trans-unit id="flash" resname="flash">
+                <source>Flash: If enabled, SMS are displayed directly in the receiver’s display</source>
+            </trans-unit>
+
+            <trans-unit id="from" resname="from">
+                <source>From: Set a custom sender identifier</source>
+            </trans-unit>
+
+            <trans-unit id="json" resname="json">
+                <source>JSON: The output is more detailed in JSON format</source>
+            </trans-unit>
+
+            <trans-unit id="label" resname="label">
+                <source>Label: Custom string for internal use. Allowed characters: a-z, A-Z, 0-9, .-_@</source>
+            </trans-unit>
+
+            <trans-unit id="no_reload" resname="no_reload">
+                <source>No Reload: Disable prevention of sending the same SMS (text, type and recipient alike) within 180 seconds</source>
+            </trans-unit>
+
+            <trans-unit id="performance_tracking" resname="performance_tracking">
+                <source>Performance Tracking: Track URLs found in the message text.</source>
+            </trans-unit>
+
+            <trans-unit id="return_msg_id" resname="return_msg_id">
+                <source>Return Message ID: If this parameter is set, the ID of the SMS is output in the second line after the status code</source>
+            </trans-unit>
+
+            <trans-unit id="text" resname="text">
+                <source>Text: The actual message content</source>
+            </trans-unit>
+
+            <trans-unit id="to" resname="to">
+                <source>To: Recipient(s) separated by comma</source>
+            </trans-unit>
+
+            <trans-unit id="ttl" resname="ttl">
+                <source>Time To Live: Specifies the validity period of the SMS in milliseconds</source>
+            </trans-unit>
+
+            <trans-unit id="udh" resname="udh">
+                <source>User Data Header: If specified and parameter "text" contains hexcode, the message will be sent as 8-bit binary</source>
+            </trans-unit>
+
+            <trans-unit id="unicode" resname="unicode">
+                <source>Unicode: Force transmission as unicode reducing the SMS length to 70 chars</source>
+            </trans-unit>
+
+            <trans-unit id="utf8" resname="utf8">
+                <source>UTF-8: Forces the detection as a UTF8 character set and overrides automatic recognition of the API</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

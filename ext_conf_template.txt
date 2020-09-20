@@ -1,0 +1,58 @@
+#### REQUIRED ####
+
+# cat=required; type=string; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:apiKey
+apiKey =
+
+
+#### SMS ####
+
+# cat=sms; type=boolean; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:debug
+debug = 0
+
+# cat=sms; type=string; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:delay
+delay =
+
+# cat=sms; type=boolean; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:details
+details = 0
+
+# cat=sms; type=boolean; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:flash
+flash = 0
+
+# cat=sms; type=string; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:foreign_id
+foreign_id =
+
+# cat=sms; type=string; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:from
+from =
+
+# cat=sms; type=boolean; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:json
+json = 0
+
+# cat=sms; type=string; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:label
+label =
+
+# cat=sms; type=boolean; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:no_reload
+no_reload = 0
+
+# cat=sms; type=boolean; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:performance_tracking
+performance_tracking = 0
+
+# cat=sms; type=boolean; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:return_msg_id
+return_msg_id = 0
+
+# cat=sms; type=string; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:text
+text =
+
+# cat=sms; type=string; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:to
+to =
+
+# cat=sms; type=int+; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:ttl
+ttl =
+
+# cat=sms; type=string; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:udh
+udh =
+
+# cat=sms; type=boolean; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:unicode
+unicode = 0
+
+# cat=sms; type=boolean; label=LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:utf8
+utf8 = 0

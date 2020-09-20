@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-09-24T17:38:32Z" product-name="sms77typo3">
+        <header />
+        <body>
+            <trans-unit id="message" resname="message">
+                <source>Message</source>
+            </trans-unit>
+
+            <trans-unit id="created" resname="created">
+                <source>Created</source>
+            </trans-unit>
+
+            <trans-unit id="config" resname="config">
+                <source>Config</source>
+            </trans-unit>
+
+            <trans-unit id="response" resname="response">
+                <source>Response</source>
+            </trans-unit>
+
+            <trans-unit id="submit" resname="submit">
+                <source>Send SMS</source>
+            </trans-unit>
+
+            <trans-unit id="add" resname="add">
+                <source>Add New</source>
+            </trans-unit>
+
+            <trans-unit id="feUsers" resname="feUsers">
+                <source>Frontend User(s)</source>
+            </trans-unit>
+
+            <trans-unit id="delete" resname="delete">
+                <source>Delete message</source>
+            </trans-unit>
+
+            <trans-unit id="resend" resname="resend">
+                <source>Edit and resend message</source>
+            </trans-unit>
+
+            <trans-unit id="show" resname="show">
+                <source>Show message</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
