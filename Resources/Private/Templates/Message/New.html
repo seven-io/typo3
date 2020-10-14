@@ -1,82 +1,59 @@
-<html
-        data-namespace-typo3-fluid='true'
-        xmlns:f='http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers'>
+<html data-namespace-typo3-fluid='true'
+      xmlns:f='http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers'>
 
-<f:be.pageRenderer
-        includeRequireJsModules="{
+<f:layout name='Resource'/>
+
+<f:section name='Form'>
+    <f:be.pageRenderer
+            includeRequireJsModules="{
             0:'{f:uri.resource(path: \'JavaScript/Message/New.js\')}'
         }"
-/>
+    />
 
-<f:if condition='{config.apiKey}'>
-    <f:then>
-        <f:form action='create' object='{config}' objectName='config'>
-            <f:form.hidden name='_type' property='_type'/>
+    <f:render arguments="{multiple: 'multiple', feUsers: feUsers}"
+              partial='FeUsers'/>
 
+    <div class='form-group'>
+        <label for='text'>
+            <f:translate
+                    key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:text'/>
+        </label>
+        <f:form.textarea class='form-control' id='text'
+                         property='text' required='required'/>
+    </div>
+
+    <div class='form-group'>
+        <label for='to'>
+            <f:translate
+                    key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:to'/>
+        </label>
+        <f:form.textfield class='form-control' id='to' property='to'
+                          required='required'/>
+    </div>
+
+    <div class='form-group'>
+        <label for='from'>
+            <f:translate
+                    key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:from'/>
+        </label>
+        <f:form.textfield class='form-control' id='from' property='from'/>
+    </div>
+
+    <f:if condition="'sms' == {config._type}">
+        <f:then>
+            <f:render arguments='{_all}' partial='SmsParams'/>
+        </f:then>
+        <f:else>
             <div class='form-group'>
-                <label for='feUsers'>
+                <label for='xml'>
                     <f:translate
-                            key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:feUsers'/>
+                            key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:xml'/>
                 </label>
-                <f:form.select id='feUsers' multiple='multiple' optionLabelField='name'
-                               optionValueField='telephone' options='{feUsers}'
-                               property='feUsers'/>
+                <f:form.checkbox class='form-control' id='xml' property='xml'
+                                 value='1'/>
             </div>
 
-            <div class='form-group'>
-                <label for='text'>
-                    <f:translate
-                            key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:text'/>
-                </label>
-                <f:form.textarea class='form-control' id='text'
-                                 property='text' required='required'/>
-            </div>
-
-            <div class='form-group'>
-                <label for='to'>
-                    <f:translate
-                            key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:to'/>
-                </label>
-                <f:form.textfield class='form-control' id='to' property='to'
-                                  required='required'/>
-            </div>
-
-            <div class='form-group'>
-                <label for='from'>
-                    <f:translate
-                            key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:from'/>
-                </label>
-                <f:form.textfield class='form-control' id='from' property='from'/>
-            </div>
-
-            <f:if condition="'sms' == {config._type}">
-                <f:then>
-                    <f:render arguments='{_all}' partial='SmsParams'/>
-                </f:then>
-                <f:else>
-                    <div class='form-group'>
-                        <label for='xml'>
-                            <f:translate
-                                    key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:xml'/>
-                        </label>
-                        <f:form.checkbox class='form-control' id='xml' property='xml'
-                                         value='1'/>
-                    </div>
-
-                </f:else>
-            </f:if>
-
-            <div class='form-group'>
-                <f:form.submit class='btn btn-default'
-                               value="{f:translate(key: 'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:submit')}"/>
-            </div>
-        </f:form>
-    </f:then>
-    <f:else>
-        <f:be.infobox
-                message="{f:translate(key:'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config:apiKeyMissing')}"
-                state='-2'
-        />
-    </f:else>
-</f:if>
+        </f:else>
+    </f:if>
+</f:section>
 </html>

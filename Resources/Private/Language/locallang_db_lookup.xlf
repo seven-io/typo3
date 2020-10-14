@@ -4,21 +4,21 @@
         <header />
         <body>
             <trans-unit id="extension.title">
-                <source>Message Records</source>
+                <source>Lookup Records</source>
             </trans-unit>
-            <trans-unit id="tx_sms77typo3_domain_model_message">
-                <source>Message</source>
+            <trans-unit id="tx_sms77typo3_domain_model_lookup">
+                <source>Lookup</source>
             </trans-unit>
-            <trans-unit id="tx_sms77typo3_domain_model_message.config">
+            <trans-unit id="tx_sms77typo3_domain_model_lookup.config">
                 <source>Config</source>
             </trans-unit>
-            <trans-unit id="tx_sms77typo3_domain_model_message.created">
+            <trans-unit id="tx_sms77typo3_domain_model_lookup.created">
                 <source>Created</source>
             </trans-unit>
-            <trans-unit id="tx_sms77typo3_domain_model_message.response">
+            <trans-unit id="tx_sms77typo3_domain_model_lookup.response">
                 <source>Response</source>
             </trans-unit>
-            <trans-unit id="tx_sms77typo3_domain_model_message.type">
+            <trans-unit id="tx_sms77typo3_domain_model_lookup.type">
                 <source>Type</source>
             </trans-unit>
         </body>

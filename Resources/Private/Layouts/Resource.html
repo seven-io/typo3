@@ -1,0 +1,23 @@
+<html data-namespace-typo3-fluid='true'
+      xmlns:f='http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers'>
+<f:if condition='{config.apiKey}'>
+    <f:then>
+        <f:form action='create' object='{config}' objectName='config'>
+            <f:form.hidden name='_type' property='_type'/>
+
+            <f:render section='Form'/>
+
+            <div class='form-group'>
+                <f:form.submit class='btn btn-default'
+                               value="{f:translate(key: 'LLL:EXT:sms77typo3/Resources/Private/Language/locallang.xlf:submit')}"/>
+            </div>
+        </f:form>
+    </f:then>
+    <f:else>
+        <f:be.infobox
+                message="{f:translate(key:'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config:apiKeyMissing')}"
+                state='-2'
+        />
+    </f:else>
+</f:if>
+</html>

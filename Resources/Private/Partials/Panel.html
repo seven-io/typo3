@@ -1,0 +1,68 @@
+<html
+        data-namespace-typo3-fluid='true'
+        xmlns:core='http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers'
+        xmlns:f='http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers'>
+<div class='panel panel-default panel-space'>
+    <div class='table-fit'>
+        <table class='table table-striped table-hover'>
+            <thead>
+            <tr>
+                <td>{f:translate(key:
+                    'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:created')}
+                </td>
+                <td>{f:translate(key:
+                    'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:type')}
+                </td>
+                <td>{f:translate(key:
+                    'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:config')}
+                </td>
+                <td>{f:translate(key:
+                    'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:response')}
+                </td>
+                <td>{f:translate(key:
+                    'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:actions')}
+                </td>
+            </tr>
+            </thead>
+            <tbody>
+            <f:for as='resource' each='{resources}'>
+                <tr data-uid='{resource.uid}'>
+                    <td>
+                        <f:render arguments='{timestamp: resource.created}'
+                                  partial='Created'/>
+                    </td>
+                    <td>
+                        {resource.type}
+                    </td>
+                    <td>
+                        <f:render arguments='{text: resource.config}' partial='Crop'/>
+                    </td>
+                    <td>
+                        <f:render arguments='{text: resource.response}' partial='Crop'/>
+                    </td>
+                    <td>
+                        <f:link.action action='delete'
+                                       arguments='{uid: resource.uid}'
+                                       title="{f:translate(key: 'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:delete')}">
+                            <core:icon identifier='actions-edit-delete'/>
+                        </f:link.action>
+
+                        <f:link.action action='new'
+                                       arguments='{configuration: resource.configArray}'
+                                       title="{f:translate(key: 'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:resend')}">
+                            <core:icon identifier='actions-document-synchronize'/>
+                        </f:link.action>
+
+                        <f:link.action action='show'
+                                       arguments='{resource: resource}'
+                                       title="{f:translate(key: 'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:show')}">
+                            <core:icon identifier='actions-document-view'/>
+                        </f:link.action>
+                    </td>
+                </tr>
+            </f:for>
+            </tbody>
+        </table>
+    </div>
+</div>
+</html>

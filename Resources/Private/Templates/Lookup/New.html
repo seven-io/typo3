@@ -1,0 +1,29 @@
+<html data-namespace-typo3-fluid='true'
+      xmlns:f='http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers'>
+
+<f:layout name='Resource'/>
+
+<f:section name='Form'>
+    <div class='form-group'>
+        <label for='number'>
+            <f:translate
+                    key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_lookup.xlf:number'/>
+        </label>
+        <f:form.textfield id='number' placeholder='004901234567890' property='number'
+                          required='required'/>
+    </div>
+
+    <f:if condition='"mnp" == {config._type}'>
+        <f:then>
+            <div class='form-group'>
+                <label for='json'>
+                    <f:translate
+                            key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_config.xlf:json'/>
+                </label>
+
+                <f:form.checkbox id='json' property='json' value='json'/>
+            </div>
+        </f:then>
+    </f:if>
+</f:section>
+</html>

@@ -1,0 +1,12 @@
+<html data-namespace-typo3-fluid='true'
+      xmlns:f='http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers'>
+<div class='form-group'>
+    <label for='feUsers'>
+        <f:translate
+                key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:feUsers'/>
+    </label>
+    <f:form.select id='feUsers' multiple='{multiple}' optionLabelField='name'
+                   optionValueField='telephone' options='{feUsers}'
+                   property='feUsers'/>
+</div>
+</html>

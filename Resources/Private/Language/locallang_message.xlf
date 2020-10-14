@@ -11,22 +11,6 @@
                 <source>Voice</source>
             </trans-unit>
 
-            <trans-unit id="success" resname="success">
-                <source>Success</source>
-            </trans-unit>
-
-            <trans-unit id="error" resname="error">
-                <source>Error</source>
-            </trans-unit>
-
-            <trans-unit id="delete_success" resname="delete_success">
-                <source>Successfully deleted message with UID #%s</source>
-            </trans-unit>
-
-            <trans-unit id="delete_error" resname="delete_error">
-                <source>Failed to delete message with UID #%s</source>
-            </trans-unit>
-
             <trans-unit id="message" resname="message">
                 <source>Message</source>
             </trans-unit>
@@ -49,10 +33,6 @@
 
             <trans-unit id="type" resname="type">
                 <source>Type</source>
-            </trans-unit>
-
-            <trans-unit id="submit" resname="submit">
-                <source>Send SMS</source>
             </trans-unit>
 
             <trans-unit id="add" resname="add">
