@@ -18,6 +18,9 @@
             <trans-unit id="tx_sms77typo3_domain_model_message.response">
                 <source>Response</source>
             </trans-unit>
+            <trans-unit id="tx_sms77typo3_domain_model_message.type">
+                <source>Type</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

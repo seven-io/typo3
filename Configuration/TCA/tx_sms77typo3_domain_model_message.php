@@ -29,6 +29,9 @@ return [
                 'type' => 'input',
             ],
         ],
+        'type' => [
+            'label' => 'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_db.xlf:type',
+        ],
     ],
     'types' => [
         '0' => ['showitem' => 'created, config, response'],

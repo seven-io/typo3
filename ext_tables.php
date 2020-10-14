@@ -1,14 +1,14 @@
-<?php
-defined('TYPO3_MODE') || die();
+<?php defined('TYPO3_MODE') || die();
 
-(function () {
+(static function () {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
         'sms77typo3',
         'tools',
         'tx_sms77typo3',
         'top',
         [
-            \Sms77\Sms77Typo3\Controller\MessageController::class => 'index, create, delete, new, show',
+            \Sms77\Sms77Typo3\Controller\MessageController::class
+            => 'index, create, delete, new, show',
         ],
         [
             'access' => 'admin',

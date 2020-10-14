@@ -3,6 +3,10 @@
     <file source-language="en" datatype="plaintext" original="messages" date="2020-09-24T17:38:32Z" product-name="sms77typo3">
         <header />
         <body>
+            <trans-unit id="apiKeyMissing" resname="apiKeyMissing">
+                <source>An API Key is required for sending. Please head to the extension configuration and set it before continuing.</source>
+            </trans-unit>
+
             <trans-unit id="apiKey" resname="apiKey">
                 <source>API Key: Required for sending messages</source>
             </trans-unit>
@@ -56,7 +60,11 @@
             </trans-unit>
 
             <trans-unit id="to" resname="to">
-                <source>To: Recipient(s) separated by comma</source>
+                <source>To: Recipient(s) separated by comma - voice messages accept just one entry</source>
+            </trans-unit>
+
+            <trans-unit id="xml" resname="xml">
+                <source>Is Text XML?</source>
             </trans-unit>
 
             <trans-unit id="ttl" resname="ttl">

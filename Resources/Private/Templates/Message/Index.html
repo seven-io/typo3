@@ -3,8 +3,19 @@
         xmlns:core='http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers'
         xmlns:f='http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers'>
 
-<f:link.action action='new'
+<f:link.action action='new' arguments="{configuration: null, type: 'voice'}"
                class='btn btn-default pull-right'>
+    {f:translate(key:
+    'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:voice')}
+
+    <core:icon identifier='actions-add' size='small'/>
+</f:link.action>
+
+<f:link.action action='new' arguments="{configuration: null, type: 'sms'}"
+               class='btn btn-default pull-right'>
+    {f:translate(key:
+    'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:sms')}
+
     <core:icon identifier='actions-add' size='small'/>
 </f:link.action>
 
@@ -13,10 +24,21 @@
         <table class='table table-striped table-hover'>
             <thead>
             <tr>
-                <td>Created</td>
-                <td>Config</td>
-                <td>Response</td>
-                <td>Actions</td>
+                <td>{f:translate(key:
+                    'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:created')}
+                </td>
+                <td>{f:translate(key:
+                    'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:type')}
+                </td>
+                <td>{f:translate(key:
+                    'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:config')}
+                </td>
+                <td>{f:translate(key:
+                    'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:response')}
+                </td>
+                <td>{f:translate(key:
+                    'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:actions')}
+                </td>
             </tr>
             </thead>
             <tbody>
@@ -25,6 +47,9 @@
                     <td>
                         <f:render arguments='{timestamp: message.created}'
                                   partial='Created'/>
+                    </td>
+                    <td>
+                        {message.type}
                     </td>
                     <td>
                         <f:render arguments='{text: message.config}' partial='Crop'/>

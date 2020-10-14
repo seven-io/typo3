@@ -1,7 +1,7 @@
 {
     "name": "sms77/sms77typo3",
     "type": "typo3-cms-extension",
-    "description": "Send SMS via the Sms77.io gateway.",
+    "description": "Send SMS & voice messages via Sms77.io.",
     "license": "GPL-2.0-or-later",
     "replace": {
         "typo3-ter/sms77typo3": "self.version"
@@ -20,7 +20,7 @@
     ],
     "require": {
         "php": "^7.2",
-        "sms77/api": "1.2.0",
+        "sms77/api": "1.2.1",
         "typo3/cms-backend": "^10.4",
         "typo3/cms-core": "^10.4",
         "typo3/cms-extbase": "^10.4",

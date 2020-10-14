@@ -1,22 +1,22 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Sms77\Sms77Typo3\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 class Message extends AbstractEntity {
-    /** @var int $created */
-    protected $created;
-
     /** @var string $config */
     protected $config;
+
+    /** @var int $created */
+    protected $created;
 
     /** @var string|null $response */
     protected $response;
 
-    /**
-     * Message constructor.
-     */
+    /** @var string $type */
+    protected $type;
+
     public function __construct() {
         $this->created = time();
     }
@@ -47,10 +47,10 @@ class Message extends AbstractEntity {
 
     /**
      * @param mixed $arg
-     * @return false|string
+     * @return string
      */
-    private function stringify($arg) {
-        return is_string($arg) ? $arg : json_encode($arg);
+    private function stringify($arg): string {
+        return is_string($arg) ? $arg : (string)json_encode($arg);
     }
 
     /** @return array|null */
@@ -66,5 +66,15 @@ class Message extends AbstractEntity {
     /** @param string $response */
     public function setResponse(string $response): void {
         $this->response = $this->stringify($response);
+    }
+
+    /** @return string */
+    public function getType(): string {
+        return $this->type;
+    }
+
+    /** @param string $type */
+    public function setType(string $type): void {
+        $this->type = $type;
     }
 }

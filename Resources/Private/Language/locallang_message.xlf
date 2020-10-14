@@ -3,6 +3,30 @@
     <file source-language="en" datatype="plaintext" original="messages" date="2020-09-24T17:38:32Z" product-name="sms77typo3">
         <header />
         <body>
+            <trans-unit id="sms" resname="sms">
+                <source>SMS</source>
+            </trans-unit>
+
+            <trans-unit id="voice" resname="voice">
+                <source>Voice</source>
+            </trans-unit>
+
+            <trans-unit id="success" resname="success">
+                <source>Success</source>
+            </trans-unit>
+
+            <trans-unit id="error" resname="error">
+                <source>Error</source>
+            </trans-unit>
+
+            <trans-unit id="delete_success" resname="delete_success">
+                <source>Successfully deleted message with UID #%s</source>
+            </trans-unit>
+
+            <trans-unit id="delete_error" resname="delete_error">
+                <source>Failed to delete message with UID #%s</source>
+            </trans-unit>
+
             <trans-unit id="message" resname="message">
                 <source>Message</source>
             </trans-unit>
@@ -11,12 +35,20 @@
                 <source>Created</source>
             </trans-unit>
 
+            <trans-unit id="actions" resname="actions">
+                <source>Actions</source>
+            </trans-unit>
+
             <trans-unit id="config" resname="config">
                 <source>Config</source>
             </trans-unit>
 
             <trans-unit id="response" resname="response">
                 <source>Response</source>
+            </trans-unit>
+
+            <trans-unit id="type" resname="type">
+                <source>Type</source>
             </trans-unit>
 
             <trans-unit id="submit" resname="submit">
