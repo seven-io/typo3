@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-09-24T17:38:32Z" product-name="sms77typo3">
+        <header />
+        <body>
+            <trans-unit id="mlang_tabs_tab" resname="mlang_tabs_tab">
+                <source>Lookups</source>
+            </trans-unit>
+
+            <trans-unit id="tx_sms77typo3_domain_model_lookup" resname="tx_sms77typo3_domain_model_lookup">
+                <source>Lookups</source>
+            </trans-unit>
+
+            <trans-unit id="tx_sms77typo3_domain_model_lookup.api_key" resname="tx_sms77typo3_domain_model_lookup.api_key">
+                <source>API Key</source>
+            </trans-unit>
+
+            <trans-unit id="format" resname="format">
+                <source>Format</source>
+            </trans-unit>
+
+            <trans-unit id="cnam" resname="cnam">
+                <source>CNAM</source>
+            </trans-unit>
+
+            <trans-unit id="hlr" resname="hlr">
+                <source>HLR</source>
+            </trans-unit>
+
+            <trans-unit id="mnp" resname="mnp">
+                <source>MNP</source>
+            </trans-unit>
+
+            <trans-unit id="lookup" resname="lookup">
+                <source>Lookup</source>
+            </trans-unit>
+
+            <trans-unit id="number" resname="number">
+                <source>Number</source>
+            </trans-unit>
+
+            <trans-unit id="type" resname="type">
+                <source>Type</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

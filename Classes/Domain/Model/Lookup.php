@@ -2,5 +2,5 @@
 
 namespace Sms77\Sms77Typo3\Domain\Model;
 
-class Message extends Model {
+class Lookup extends Model {
 }

@@ -3,28 +3,16 @@
     <file source-language="en" datatype="plaintext" original="messages" date="2020-09-24T17:38:32Z" product-name="sms77typo3">
         <header />
         <body>
+            <trans-unit id="mlang_tabs_tab" resname="mlang_tabs_tab">
+                <source>Messages</source>
+            </trans-unit>
+
             <trans-unit id="sms" resname="sms">
                 <source>SMS</source>
             </trans-unit>
 
             <trans-unit id="voice" resname="voice">
                 <source>Voice</source>
-            </trans-unit>
-
-            <trans-unit id="success" resname="success">
-                <source>Success</source>
-            </trans-unit>
-
-            <trans-unit id="error" resname="error">
-                <source>Error</source>
-            </trans-unit>
-
-            <trans-unit id="delete_success" resname="delete_success">
-                <source>Successfully deleted message with UID #%s</source>
-            </trans-unit>
-
-            <trans-unit id="delete_error" resname="delete_error">
-                <source>Failed to delete message with UID #%s</source>
             </trans-unit>
 
             <trans-unit id="message" resname="message">
@@ -49,10 +37,6 @@
 
             <trans-unit id="type" resname="type">
                 <source>Type</source>
-            </trans-unit>
-
-            <trans-unit id="submit" resname="submit">
-                <source>Send SMS</source>
             </trans-unit>
 
             <trans-unit id="add" resname="add">

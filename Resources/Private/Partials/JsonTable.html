@@ -6,8 +6,23 @@
 <table>
     <tbody>
     <f:for as='value' each='{array}' key='key'>
+        <f:variable name='valueType' value='{s77:getType(data: value)}'/>
+
+        <f:if condition='"boolean" == {valueType}'>
+            <f:then>
+                <f:if condition='{value}'>
+                    <f:then>
+                        <f:variable name='value' value='true'/>
+                    </f:then>
+                    <f:else>
+                        <f:variable name='value' value='false'/>
+                    </f:else>
+                </f:if>
+            </f:then>
+        </f:if>
+
         <tr>
-            <f:if condition='{s77:isInteger(data: key)}'>
+            <f:if condition='"integer" == {valueType}'>
                 <f:then>
                     <td colspan='2'>{value}</td>
                 </f:then>

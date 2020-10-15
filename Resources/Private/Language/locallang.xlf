@@ -4,7 +4,7 @@
         <header />
         <body>
             <trans-unit id="mlang_tabs_tab" resname="mlang_tabs_tab">
-                <source>Sms77.io Messages</source>
+                <source>Sms77.io</source>
             </trans-unit>
 
             <trans-unit id="tx_sms77typo3_domain_model_message" resname="tx_sms77typo3_domain_model_message">
@@ -13,6 +13,30 @@
 
             <trans-unit id="tx_sms77typo3_domain_model_message.api_key" resname="tx_sms77typo3_domain_model_message.api_key">
                 <source>API Key</source>
+            </trans-unit>
+
+            <trans-unit id="success" resname="success">
+                <source>Success</source>
+            </trans-unit>
+
+            <trans-unit id="error" resname="error">
+                <source>Error</source>
+            </trans-unit>
+
+            <trans-unit id="delete_success" resname="delete_success">
+                <source>Successfully deleted resource with UID #%s</source>
+            </trans-unit>
+
+            <trans-unit id="delete_error" resname="delete_error">
+                <source>Failed to delete resource with UID #%s</source>
+            </trans-unit>
+
+            <trans-unit id="submit" resname="submit">
+                <source>Submit</source>
+            </trans-unit>
+
+            <trans-unit id="new" resname="new">
+                <source>New</source>
             </trans-unit>
         </body>
     </file>

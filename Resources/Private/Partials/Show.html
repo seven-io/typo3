@@ -1,0 +1,58 @@
+<html
+        data-namespace-typo3-fluid='true'
+        xmlns:f='http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers'>
+<h1>
+    <f:translate key='{h1}'/>
+    #{resource.uid}
+</h1>
+
+<table class='table table-striped table-bordered table-hover'>
+    <tr>
+        <th>
+            <f:translate
+                    key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:created'/>
+        </th>
+        <td>
+            <f:render arguments='{timestamp: resource.created}'
+                      partial='Created'/>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            <f:translate
+                    key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:type'/>
+        </th>
+        <td>
+            {resource.type}
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            <f:translate
+                    key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:config'/>
+        </th>
+        <td>
+            <f:render arguments='{array: resource.configArray}' partial='JsonTable'/>
+        </td>
+    </tr>
+
+    <tr>
+        <th>
+            <f:translate
+                    key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf:response'/>
+        </th>
+        <td>
+            <f:if condition='{resource.response}'>
+                <f:then>
+                    <f:render arguments='{array: resource.responseArray}'
+                              partial='JsonTable'/>
+                </f:then>
+                <f:else>-</f:else>
+            </f:if>
+        </td>
+    </tr>
+</table>
+
+</html>
