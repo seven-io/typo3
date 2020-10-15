@@ -1,0 +1,15 @@
+<html data-namespace-typo3-fluid='true'
+      xmlns:f='http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers'>
+
+<label for='{name}'>
+    <f:translate key='{ns}:{name}'/>
+</label>
+
+<f:form.select id='{name}' property='{name}' required='{required}'>
+    <f:for as='value' each='{options}'>
+        <f:form.select.option value='{value}'>
+            <f:translate key='{ns}:{value}'/>
+        </f:form.select.option>
+    </f:for>
+</f:form.select>
+</html>

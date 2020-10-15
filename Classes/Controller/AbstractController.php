@@ -94,23 +94,34 @@ abstract class AbstractController extends ActionController implements LoggerAwar
             $configuration['apiKey'] = Util::getConfiguration()['apiKey'];
         }
 
-        if (array_key_exists('_type', $configuration)) {
-            $type = $configuration['_type'];
-        } else {
-            $type = $type ?? 'sms';
-        }
+        $feUsers = [];
+        $isLookup = false;
 
-        foreach ($this->_feUserRepository->findAll() as $k => $feUser) {
-            /** @var FrontendUser $feUser */
-            if ('' !== $feUser->getTelephone()) {
-                $feUsers[] = $feUser;
+        if ('lookup' === $type) {
+            $isLookup = true;
+        } elseif (array_key_exists('type', $configuration)) { // is resend lookup
+            $isLookup = true;
+            $type = $configuration['type'];
+        } else {
+            if (array_key_exists('_type', $configuration)) { // is voice or sms
+                $type = $configuration['_type'];
+            } else {
+                $type = $type ?? 'sms'; // fallback for older versions without type column
             }
+
+            foreach ($this->_feUserRepository->findAll() as $k => $feUser) {
+                /** @var FrontendUser $feUser */
+                if ('' !== $feUser->getTelephone()) {
+                    $feUsers[] = $feUser;
+                }
+            }
+
+            $configuration['_type'] = $type;
         }
-        $configuration['_type'] = $type;
 
         $this->view->assignMultiple([
             'config' => (object)$configuration,
-            'feUsers' => isset($feUsers) ? array_unique($feUsers) : [],
+            'feUsers' => array_unique($feUsers),
         ]);
     }
 
@@ -128,7 +139,8 @@ abstract class AbstractController extends ActionController implements LoggerAwar
 
         /** @var Model $msg */
         $resource = new $this->_resourceFQDN();
-        $resource->setType($config['_type']);
+        $isLookup = isset($config['type']);
+        $resource->setType($isLookup ? $config['type'] : $config['_type']);
 
         foreach ($config as $k => $v) {
             if ('' === $v) {
@@ -137,11 +149,6 @@ abstract class AbstractController extends ActionController implements LoggerAwar
         }
 
         $type = $resource->getType();
-        $isLookup = in_array($type, ['hlr', 'format', 'cnam', 'mnp']);
-
-        if ($isLookup) {
-            $config['type'] = $config['_type'];
-        }
 
         unset($config['_type'], $config['feUsers']);
 

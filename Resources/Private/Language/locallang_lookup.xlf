@@ -38,6 +38,10 @@
             <trans-unit id="number" resname="number">
                 <source>Number</source>
             </trans-unit>
+
+            <trans-unit id="type" resname="type">
+                <source>Type</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

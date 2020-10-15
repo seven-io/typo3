@@ -5,10 +5,23 @@
 
 <f:section name='Form'>
     <div class='form-group'>
+        <f:render
+                arguments='{name: "type", required: "required", options: {
+                    0: "",
+                    1: "cnam",
+                    2: "format",
+                    3: "hlr",
+                    4: "mnp"
+                }, ns: "LLL:EXT:sms77typo3/Resources/Private/Language/locallang_lookup.xlf"}'
+                partial='Select'/>
+    </div>
+
+    <div class='form-group'>
         <label for='number'>
             <f:translate
                     key='LLL:EXT:sms77typo3/Resources/Private/Language/locallang_lookup.xlf:number'/>
         </label>
+
         <f:form.textfield id='number' placeholder='004901234567890' property='number'
                           required='required'/>
     </div>

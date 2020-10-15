@@ -34,6 +34,10 @@
             <trans-unit id="submit" resname="submit">
                 <source>Submit</source>
             </trans-unit>
+
+            <trans-unit id="new" resname="new">
+                <source>New</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
