@@ -6,6 +6,7 @@ use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotCon
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 class Util {
     /**
@@ -61,5 +62,29 @@ class Util {
     public static function getConfiguration(): array {
         return GeneralUtility::makeInstance(ExtensionConfiguration::class)
             ->get('sms77typo3');
+    }
+
+    /**
+     * @param string $ctrl
+     * @param string $name
+     * @param string $icon
+     * @param string $labels
+     * @return void
+     */
+    public static function registerModule(string $ctrl, string $name, string $icon, string $labels): void {
+        ExtensionUtility::registerModule(
+            'sms77typo3',
+            'sms77typo3',
+            "tx_sms77typo3_$name",
+            '',
+            [
+                $ctrl => 'index, create, delete, new, show',
+            ],
+            [
+                'icon' => $icon,
+                'labels' => $labels,
+            ]
+        );
+
     }
 }
