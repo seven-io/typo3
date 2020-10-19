@@ -10,7 +10,7 @@
         }"
     />
 
-    <f:render arguments="{multiple: 'multiple', feUsers: feUsers}"
+    <f:render arguments='{type: config._type, feUsers: feUsers}'
               partial='FeUsers'/>
 
     <div class='form-group'>
@@ -39,7 +39,7 @@
         <f:form.textfield class='form-control' id='from' property='from'/>
     </div>
 
-    <f:if condition="'sms' == {config._type}">
+    <f:if condition='"sms" == {config._type}'>
         <f:then>
             <f:render arguments='{_all}' partial='SmsParams'/>
         </f:then>
@@ -52,7 +52,6 @@
                 <f:form.checkbox class='form-control' id='xml' property='xml'
                                  value='1'/>
             </div>
-
         </f:else>
     </f:if>
 </f:section>
