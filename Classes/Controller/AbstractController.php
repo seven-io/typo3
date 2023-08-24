@@ -1,12 +1,12 @@
 <?php declare(strict_types=1);
 
-namespace Sms77\Sms77Typo3\Controller;
+namespace Seven\TYPO3\Controller;
 
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Sms77\Api\Client;
-use Sms77\Sms77Typo3\Domain\Model\Model;
-use Sms77\Sms77Typo3\Util;
+use Seven\TYPO3\Domain\Model\Model;
+use Seven\TYPO3\Util;
 use TYPO3\CMS\Backend\View\BackendTemplateView;
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
@@ -23,7 +23,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 /**
  * Backend module message action controller
  * Scope: backend
- * @package Sms77\Sms77Typo3\Controller
+ * @package Seven\TYPO3\Controller
  */
 abstract class AbstractController extends ActionController implements LoggerAwareInterface {
     use LoggerAwareTrait;
@@ -66,7 +66,7 @@ abstract class AbstractController extends ActionController implements LoggerAwar
 
         $this->cacheService->clearCachesOfRegisteredPageIds();
 
-        $transRoot = 'LLL:EXT:sms77typo3/Resources/Private/Language/locallang.xlf:';
+        $transRoot = 'LLL:EXT:seventypo3/Resources/Private/Language/locallang.xlf:';
         $this->addFlashMessage(
             LocalizationUtility::translate("$transRoot$msg", null, [$uid]),
             LocalizationUtility::translate("$transRoot$title"), $type, true);

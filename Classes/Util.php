@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Sms77\Sms77Typo3;
+namespace Seven\TYPO3;
 
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
 use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
@@ -21,7 +21,7 @@ class Util {
                         'readOnly' => true,
                         'type' => 'none',
                     ],
-                    'label' => 'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_db.xlf:created',
+                    'label' => 'LLL:EXT:seventypo3/Resources/Private/Language/locallang_db.xlf:created',
                 ],
                 'config' => [
                     'config' => [
@@ -29,7 +29,7 @@ class Util {
                         'size' => 64,
                         'type' => 'input',
                     ],
-                    'label' => 'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_db.xlf:config',
+                    'label' => 'LLL:EXT:seventypo3/Resources/Private/Language/locallang_db.xlf:config',
                 ],
                 'response' => [
                     'config' => [
@@ -37,16 +37,16 @@ class Util {
                         'size' => 64,
                         'type' => 'input',
                     ],
-                    'label' => 'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_db.xlf:response',
+                    'label' => 'LLL:EXT:seventypo3/Resources/Private/Language/locallang_db.xlf:response',
                 ],
                 'type' => [
-                    'label' => 'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_db.xlf:type',
+                    'label' => 'LLL:EXT:seventypo3/Resources/Private/Language/locallang_db.xlf:type',
                 ],
             ],
             'ctrl' => [
-                'iconfile' => 'EXT:sms77typo3/Resources/Public/Icons/Extension.svg',
+                'iconfile' => 'EXT:seventypo3/Resources/Public/Icons/Extension.svg',
                 'label' => 'created',
-                'title' => "LLL:EXT:sms77typo3/Resources/Private/Language/locallang_db.xlf:$transKey",
+                'title' => "LLL:EXT:seventypo3/Resources/Private/Language/locallang_db.xlf:$transKey",
             ],
             'types' => [
                 '0' => ['showitem' => 'created, config, type, response'],
@@ -61,7 +61,7 @@ class Util {
      */
     public static function getConfiguration(): array {
         return GeneralUtility::makeInstance(ExtensionConfiguration::class)
-            ->get('sms77typo3');
+            ->get('seventypo3');
     }
 
     /**
@@ -73,9 +73,9 @@ class Util {
      */
     public static function registerModule(string $ctrl, string $name, string $icon, string $labels): void {
         ExtensionUtility::registerModule(
-            'sms77typo3',
-            'sms77typo3',
-            "tx_sms77typo3_$name",
+            'seventypo3',
+            'seventypo3',
+            "tx_seventypo3_$name",
             '',
             [
                 $ctrl => 'index, create, delete, new, show',

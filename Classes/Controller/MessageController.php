@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Sms77\Sms77Typo3\Controller;
+namespace Seven\TYPO3\Controller;
 
-use Sms77\Sms77Typo3\Domain\Model\Message;
-use Sms77\Sms77Typo3\Domain\Repository\MessageRepository;
+use Seven\TYPO3\Domain\Model\Message;
+use Seven\TYPO3\Domain\Repository\MessageRepository;
 
 /**
  * Backend module message action controller
  * Scope: backend
- * @package Sms77\Sms77Typo3\Controller
+ * @package Seven\TYPO3\Controller
  */
 class MessageController extends AbstractController {
     public function __construct(MessageRepository $messageRepository) {

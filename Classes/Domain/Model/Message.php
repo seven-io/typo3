@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Sms77\Sms77Typo3\Domain\Model;
+namespace Seven\TYPO3\Domain\Model;
 
 class Message extends Model {
 }

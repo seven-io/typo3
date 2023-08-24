@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Sms77\Sms77Typo3\Domain\Repository;
+namespace Seven\TYPO3\Domain\Repository;
 
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 

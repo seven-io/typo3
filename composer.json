@@ -1,17 +1,17 @@
 {
-    "name": "sms77/sms77typo3",
+    "name": "seven.io/typo3",
     "type": "typo3-cms-extension",
-    "description": "Send SMS & voice messages via Sms77.io.",
+    "description": "Send SMS & voice messages via seven.io.",
     "license": "GPL-2.0-or-later",
     "replace": {
-        "typo3-ter/sms77typo3": "self.version"
+        "typo3-ter/seventypo3": "self.version"
     },
     "authors": [
         {
-            "name": "Andre Matthies",
+            "name": "seven communications GmbH & Co. KG",
             "role": "Developer",
-            "email": "a.matthies@sms77.io",
-            "homepage": "https://www.sms77.io"
+            "email": "a.matthies@seven.io",
+            "homepage": "https://www.seven.io"
         }
     ],
     "keywords": [
@@ -29,7 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Sms77\\Sms77Typo3\\": "Classes/"
+            "Seven\\TYPO3\\": "Classes/"
         }
     }
 }

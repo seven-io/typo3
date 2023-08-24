@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Sms77\Sms77Typo3\ViewHelpers;
+namespace Seven\TYPO3\ViewHelpers;
 
 use TYPO3Fluid\Fluid\Core\Rendering\RenderingContextInterface;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;

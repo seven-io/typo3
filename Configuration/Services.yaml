@@ -4,5 +4,5 @@ services:
     autoconfigure: true
     public: false
 
-  Sms77\Sms77Typo3\:
+  Seven\TYPO3\:
     resource: '../Classes/*'

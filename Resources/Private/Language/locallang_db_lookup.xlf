@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="messages" date="2020-09-24T17:38:32Z" product-name="sms77typo3">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-09-24T17:38:32Z" product-name="seventypo3">
         <header />
         <body>
             <trans-unit id="extension.title">
                 <source>Lookup Records</source>
             </trans-unit>
-            <trans-unit id="tx_sms77typo3_domain_model_lookup">
+            <trans-unit id="tx_seventypo3_domain_model_lookup">
                 <source>Lookup</source>
             </trans-unit>
-            <trans-unit id="tx_sms77typo3_domain_model_lookup.config">
+            <trans-unit id="tx_seventypo3_domain_model_lookup.config">
                 <source>Config</source>
             </trans-unit>
-            <trans-unit id="tx_sms77typo3_domain_model_lookup.created">
+            <trans-unit id="tx_seventypo3_domain_model_lookup.created">
                 <source>Created</source>
             </trans-unit>
-            <trans-unit id="tx_sms77typo3_domain_model_lookup.response">
+            <trans-unit id="tx_seventypo3_domain_model_lookup.response">
                 <source>Response</source>
             </trans-unit>
-            <trans-unit id="tx_sms77typo3_domain_model_lookup.type">
+            <trans-unit id="tx_seventypo3_domain_model_lookup.type">
                 <source>Type</source>
             </trans-unit>
         </body>

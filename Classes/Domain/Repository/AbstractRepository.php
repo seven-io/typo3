@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Sms77\Sms77Typo3\Domain\Repository;
+namespace Seven\TYPO3\Domain\Repository;
 
 use PDO;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -15,7 +15,7 @@ abstract class AbstractRepository extends Repository {
     public function __construct(ObjectManagerInterface $objectManager, string $tableName) {
         parent::__construct($objectManager);
 
-        $this->_tableName = "tx_sms77typo3_domain_model_$tableName";
+        $this->_tableName = "tx_seventypo3_domain_model_$tableName";
     }
 
     public function removeByUid(int $uid): bool {

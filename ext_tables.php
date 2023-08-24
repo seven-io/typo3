@@ -1,28 +1,28 @@
 <?php defined('TYPO3_MODE') || die();
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addModule(
-    'sms77typo3',
+    'seventypo3',
     '',
     '',
     '',
     [
-        'icon' => 'EXT:sms77typo3/Resources/Public/Icons/Extension.svg',
-        'labels' => 'LLL:EXT:sms77typo3/Resources/Private/Language/locallang.xlf',
-        'name' => 'sms77typo3',
+        'icon' => 'EXT:seventypo3/Resources/Public/Icons/Extension.svg',
+        'labels' => 'LLL:EXT:seventypo3/Resources/Private/Language/locallang.xlf',
+        'name' => 'seventypo3',
         'standalone' => true,
     ]
 );
 
-\Sms77\Sms77Typo3\Util::registerModule(
-    \Sms77\Sms77Typo3\Controller\MessageController::class,
+\Seven\TYPO3\Util::registerModule(
+    \Seven\TYPO3\Controller\MessageController::class,
     'message',
-    "EXT:sms77typo3/Resources/Public/Icons/actions-message.svg",
-    'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_message.xlf'
+    "EXT:seventypo3/Resources/Public/Icons/actions-message.svg",
+    'LLL:EXT:seventypo3/Resources/Private/Language/locallang_message.xlf'
 );
 
-\Sms77\Sms77Typo3\Util::registerModule(
-    \Sms77\Sms77Typo3\Controller\LookupController::class,
+\Seven\TYPO3\Util::registerModule(
+    \Seven\TYPO3\Controller\LookupController::class,
     'lookup',
-    "EXT:sms77typo3/Resources/Public/Icons/actions-search.svg",
-    'LLL:EXT:sms77typo3/Resources/Private/Language/locallang_lookup.xlf'
+    "EXT:seventypo3/Resources/Public/Icons/actions-search.svg",
+    'LLL:EXT:seventypo3/Resources/Private/Language/locallang_lookup.xlf'
 );

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="messages" date="2020-09-24T17:38:32Z" product-name="sms77typo3">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-09-24T17:38:32Z" product-name="seventypo3">
         <header />
         <body>
             <trans-unit id="apiKeyMissing" resname="apiKeyMissing">

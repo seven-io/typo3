@@ -2,12 +2,12 @@
 
 /** @var string $_EXTKEY extension key set by typo3 */
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'Sms77.io API',
-    'description' => 'Send SMS & voice messages via Sms77.io.',
+    'title' => 'seven.io API',
+    'description' => 'Send SMS & voice messages via seven.io.',
     'category' => 'module',
-    'author' => 'Andre Matthies',
-    'author_company' => 'sms77 e.K.',
-    'author_email' => 'a.matthies@sms77.io',
+    'author' => 'seven communications GmbH & Co. KG',
+    'author_company' => 'seven communications GmbH & Co. KG',
+    'author_email' => 'support@seven.io',
     'state' => 'stable',
     'clearCacheOnLoad' => false,
     'version' => '0.3.1',
@@ -19,7 +19,7 @@ $EM_CONF[$_EXTKEY] = [
     ],
     'autoload' => [
         'psr-4' => [
-            'Sms77\\Sms77Typo3\\' => 'Classes',
+            'Seven\\TYPO3\\' => 'Classes',
         ],
     ],
 ];

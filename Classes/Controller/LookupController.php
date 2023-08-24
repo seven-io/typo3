@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Sms77\Sms77Typo3\Controller;
+namespace Seven\TYPO3\Controller;
 
-use Sms77\Sms77Typo3\Domain\Model\Lookup;
-use Sms77\Sms77Typo3\Domain\Repository\LookupRepository;
+use Seven\TYPO3\Domain\Model\Lookup;
+use Seven\TYPO3\Domain\Repository\LookupRepository;
 
 /**
  * Backend module lookup action controller
  * Scope: backend
- * @package Sms77\Sms77Typo3\Controller
+ * @package Seven\TYPO3\Controller
  */
 class LookupController extends AbstractController {
     public function __construct(LookupRepository $lookupRepository) {
