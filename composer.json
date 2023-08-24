@@ -2,7 +2,7 @@
     "name": "seven.io/typo3",
     "type": "typo3-cms-extension",
     "description": "Send SMS & voice messages via seven.io.",
-    "license": "GPL-2.0-or-later",
+    "license": "MIT",
     "replace": {
         "typo3-ter/seventypo3": "self.version"
     },
