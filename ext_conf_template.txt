@@ -6,9 +6,6 @@ apiKey =
 
 #### SMS ####
 
-# cat=sms; type=boolean; label=LLL:EXT:seventypo3/Resources/Private/Language/locallang_config.xlf:debug
-debug = 0
-
 # cat=sms; type=string; label=LLL:EXT:seventypo3/Resources/Private/Language/locallang_config.xlf:delay
 delay =
 

@@ -20,7 +20,7 @@
     ],
     "require": {
         "php": "^7.2",
-        "sms77/api": "1.2.1",
+        "sms77/api": "v2.6.0",
         "typo3/cms-backend": "^10.4",
         "typo3/cms-core": "^10.4",
         "typo3/cms-extbase": "^10.4",

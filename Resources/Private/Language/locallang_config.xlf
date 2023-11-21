@@ -11,16 +11,12 @@
                 <source>API Key: Required for sending messages</source>
             </trans-unit>
 
-            <trans-unit id="debug" resname="debug">
-                <source>Debug: If activated no SMS will be sent or calculated</source>
-            </trans-unit>
-
             <trans-unit id="delay" resname="delay">
-                <source>Delay: Delay dispatch. Expects an UNIX timestamp or date string with the format format yyyy-mm-dd hh:ii</source>
+                <source>Delay: Delay dispatch. Expects a UNIX timestamp or date string with the format yyyy-mm-dd hh:ii</source>
             </trans-unit>
 
             <trans-unit id="details" resname="details">
-                <source>Details: Shows numerous details to the sent  Handy for debugging</source>
+                <source>Details: Shows numerous details for the sent message. Handy for debugging</source>
             </trans-unit>
 
             <trans-unit id="foreign_id" resname="foreign_id">
