@@ -1,91 +1,87 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Seven\TYPO3\Controller;
 
+use Psr\Http\Message\ResponseInterface;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
-use Sms77\Api\Client;
+use Seven\Api\Client;
+use Seven\Api\Resource\Lookup\LookupResource;
+use Seven\Api\Resource\Sms\SmsParams;
+use Seven\Api\Resource\Sms\SmsResource;
+use Seven\Api\Resource\Voice\VoiceParams;
+use Seven\Api\Resource\Voice\VoiceResource;
 use Seven\TYPO3\Domain\Model\Model;
 use Seven\TYPO3\Util;
-use TYPO3\CMS\Backend\View\BackendTemplateView;
-use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationExtensionNotConfiguredException;
-use TYPO3\CMS\Core\Configuration\Exception\ExtensionConfigurationPathDoesNotExistException;
+use TYPO3\CMS\Backend\Attribute\AsController;
+use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Core\Environment;
-use TYPO3\CMS\Core\Messaging\FlashMessage;
-use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
 
 /**
- * Backend module message action controller
- * Scope: backend
- * @package Seven\TYPO3\Controller
+ * Base controller for seven.io backend modules
  */
-abstract class AbstractController extends ActionController implements LoggerAwareInterface {
+#[AsController]
+abstract class AbstractController extends ActionController implements LoggerAwareInterface
+{
     use LoggerAwareTrait;
 
-    /** @var string $defaultViewObjectName Backend Template Container */
-    protected $defaultViewObjectName = BackendTemplateView::class;
+    private Repository $repository;
+    private string $resourceFQDN;
 
-    /** @var FrontendUserRepository $_feUserRepository */
-    private $_feUserRepository;
-
-    /** @var PersistenceManager $_persistenceManager */
-    private $_persistenceManager;
-
-    /** @var Repository $_repository */
-    private $_repository;
-
-    /** @var string $_resourceFQDN */
-    private $_resourceFQDN;
-
-    public function __construct(Repository $repo, string $fqdn) {
-        $this->_repository = $repo;
-        $this->_resourceFQDN = $fqdn;
+    public function __construct(
+        private readonly ModuleTemplateFactory $moduleTemplateFactory,
+        private readonly PersistenceManager $persistenceManager,
+        private readonly FrontendUserRepository $feUserRepository,
+        Repository $repo,
+        string $fqdn,
+    ) {
+        $this->repository = $repo;
+        $this->resourceFQDN = $fqdn;
     }
 
-    /**
-     * @param int $uid
-     * @return void
-     * @throws StopActionException
-     */
-    public function deleteAction(int $uid): void {
-        if ($this->_repository->removeByUid($uid)) {
-            $msg = "delete_success";
-            $title = 'success';
-            $type = FlashMessage::OK;
-        } else {
-            $msg = "delete_error";
-            $title = 'error';
-            $type = FlashMessage::ERROR;
-        }
+    public function indexAction(): ResponseInterface
+    {
+        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
+        $moduleTemplate->assignMultiple([
+            'resources' => $this->repository->findAll(),
+        ]);
 
-        $this->cacheService->clearCachesOfRegisteredPageIds();
+        return $moduleTemplate->renderResponse();
+    }
+
+    public function deleteAction(int $uid): ResponseInterface
+    {
+        if ($this->repository->removeByUid($uid)) {
+            $msg = 'delete_success';
+            $title = 'success';
+            $type = ContextualFeedbackSeverity::OK;
+        } else {
+            $msg = 'delete_error';
+            $title = 'error';
+            $type = ContextualFeedbackSeverity::ERROR;
+        }
 
         $transRoot = 'LLL:EXT:seventypo3/Resources/Private/Language/locallang.xlf:';
         $this->addFlashMessage(
             LocalizationUtility::translate("$transRoot$msg", null, [$uid]),
-            LocalizationUtility::translate("$transRoot$title"), $type, true);
+            LocalizationUtility::translate("$transRoot$title"),
+            $type,
+            true,
+        );
 
-        $this->redirect('index');
+        return $this->redirect('index');
     }
 
-    public function _showAction($resource): void {
-        $this->view->assign('resource', $resource);
-    }
-
-    /**
-     * @param array|null $configuration
-     * @param string|null $type
-     * @return void
-     * @throws ExtensionConfigurationPathDoesNotExistException
-     * @throws ExtensionConfigurationExtensionNotConfiguredException
-     */
-    public function newAction(?array $configuration = null, ?string $type = null): void {
+    public function newAction(?array $configuration = null, ?string $type = null): ResponseInterface
+    {
         if (!isset($configuration)) {
             $configuration = Util::getConfiguration();
         }
@@ -99,18 +95,17 @@ abstract class AbstractController extends ActionController implements LoggerAwar
 
         if ('lookup' === $type) {
             $isLookup = true;
-        } elseif (array_key_exists('type', $configuration)) { // is resend lookup
+        } elseif (array_key_exists('type', $configuration)) {
             $isLookup = true;
             $type = $configuration['type'];
         } else {
-            if (array_key_exists('_type', $configuration)) { // is voice or sms
+            if (array_key_exists('_type', $configuration)) {
                 $type = $configuration['_type'];
             } else {
-                $type = $type ?? 'sms'; // fallback for older versions without type column
+                $type = $type ?? 'sms';
             }
 
-            foreach ($this->_feUserRepository->findAll() as $k => $feUser) {
-                /** @var FrontendUser $feUser */
+            foreach ($this->feUserRepository->findAll() as $feUser) {
                 if ('' !== $feUser->getTelephone()) {
                     $feUsers[] = $feUser;
                 }
@@ -119,26 +114,21 @@ abstract class AbstractController extends ActionController implements LoggerAwar
             $configuration['_type'] = $type;
         }
 
-        $this->view->assignMultiple([
+        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
+        $moduleTemplate->assignMultiple([
             'config' => (object)$configuration,
             'feUsers' => array_unique($feUsers),
         ]);
+
+        return $moduleTemplate->renderResponse();
     }
 
-    /**
-     * @param array $config
-     * @return void
-     * @throws ExtensionConfigurationPathDoesNotExistException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
-     * @throws ExtensionConfigurationExtensionNotConfiguredException
-     */
-    public function createAction(array $config): void {
+    public function createAction(array $config): ResponseInterface
+    {
         $this->log($config);
 
-        /** @var Model $msg */
-        $resource = new $this->_resourceFQDN();
+        /** @var Model $resource */
+        $resource = new $this->resourceFQDN();
         $isLookup = isset($config['type']);
         $resource->setType($isLookup ? $config['type'] : $config['_type']);
 
@@ -149,55 +139,89 @@ abstract class AbstractController extends ActionController implements LoggerAwar
         }
 
         $type = $resource->getType();
-
         unset($config['_type'], $config['feUsers']);
-
         $resource->setConfig($config);
 
-        $this->_repository->add($resource);
-        $this->_persistenceManager->persistAll();
+        $this->repository->add($resource);
+        $this->persistenceManager->persistAll();
 
-        $client = new Client(Util::getConfiguration()['apiKey'], 'typo3');
-        $arg1Key = $isLookup ? 'type' : 'to';
-        $arg2Key = $isLookup ? 'number' : 'text';
-        $arg1 = $config[$arg1Key];
-        $arg2 = $config[$arg2Key];
-        unset($config[$arg1], $config[$arg2]);
-
-        $res = $client->{$isLookup ? 'lookup' : $type}($arg1, $arg2, $config);
+        $apiKey = Util::getConfiguration()['apiKey'];
+        $client = new Client($apiKey, 'typo3');
+        $res = $this->callApi($client, $type, $isLookup, $config);
         $this->log($res);
 
-        $resource->setResponse($res);
-        $this->_repository->update($resource);
-        $this->_persistenceManager->persistAll();
+        $resource->setResponse(is_string($res) ? $res : json_encode($res));
+        $this->repository->update($resource);
+        $this->persistenceManager->persistAll();
 
-        $this->redirect('show', null, null, ['resource' => $resource]);
+        return $this->redirect('show', null, null, ['resource' => $resource]);
     }
 
-    /**
-     * @param mixed $data
-     * @return void
-     */
-    private function log($data): void {
-        if (!Environment::getContext()->isProduction()) {
-            $this->logger->critical(json_encode($data));
+    protected function renderShowAction(Model $resource): ResponseInterface
+    {
+        $moduleTemplate = $this->moduleTemplateFactory->create($this->request);
+        $moduleTemplate->assign('resource', $resource);
+
+        return $moduleTemplate->renderResponse();
+    }
+
+    private function callApi(Client $client, string $type, bool $isLookup, array $config): mixed
+    {
+        if ($isLookup) {
+            $lookupResource = new LookupResource($client);
+            $number = $config['number'];
+
+            return match ($type) {
+                'hlr' => $lookupResource->hlr($number),
+                'cnam' => $lookupResource->cnam($number),
+                'mnp' => $lookupResource->mnp($number),
+                'format' => $lookupResource->format($number),
+            };
         }
+
+        if ('voice' === $type) {
+            $voiceResource = new VoiceResource($client);
+            $params = new VoiceParams($config['text'], $config['to']);
+
+            return $voiceResource->call($params);
+        }
+
+        // SMS
+        $smsResource = new SmsResource($client);
+        $params = new SmsParams($config['text'], $config['to']);
+
+        if (!empty($config['from'])) {
+            $params->setFrom($config['from']);
+        }
+        if (!empty($config['flash'])) {
+            $params->setFlash(true);
+        }
+        if (!empty($config['foreign_id'])) {
+            $params->setForeignId($config['foreign_id']);
+        }
+        if (!empty($config['label'])) {
+            $params->setLabel($config['label']);
+        }
+        if (!empty($config['udh'])) {
+            $params->setUdh($config['udh']);
+        }
+        if (!empty($config['ttl'])) {
+            $params->setTtl((int)$config['ttl']);
+        }
+        if (!empty($config['delay'])) {
+            $params->setDelay(new \DateTime($config['delay']));
+        }
+        if (!empty($config['performance_tracking'])) {
+            $params->setPerformanceTracking(true);
+        }
+
+        return $smsResource->dispatch($params);
     }
 
-    /** @param PersistenceManager $persistenceManager */
-    public function injectPersistenceManager(PersistenceManager $persistenceManager): void {
-        $this->_persistenceManager = $persistenceManager;
-    }
-
-    /** @param FrontendUserRepository $feUserRepository */
-    public function injectFeUserRepository(FrontendUserRepository $feUserRepository): void {
-        $this->_feUserRepository = $feUserRepository;
-    }
-
-    /** @return void */
-    public function indexAction(): void {
-        $this->view->assignMultiple([
-            'resources' => $this->_repository->findAll(),
-        ]);
+    private function log(mixed $data): void
+    {
+        if (!Environment::getContext()->isProduction()) {
+            $this->logger->debug(json_encode($data));
+        }
     }
 }

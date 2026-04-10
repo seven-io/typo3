@@ -1,6 +1,5 @@
 <?php
 
-/** @var string $_EXTKEY extension key set by typo3 */
 $EM_CONF[$_EXTKEY] = [
     'title' => 'seven.io API',
     'description' => 'Send SMS & voice messages via seven.io.',
@@ -10,11 +9,11 @@ $EM_CONF[$_EXTKEY] = [
     'author_email' => 'support@seven.io',
     'state' => 'stable',
     'clearCacheOnLoad' => false,
-    'version' => '0.4.0',
+    'version' => '1.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '10.0.00-10.4.99',
-            'php' => '7.2.0-7.3.99',
+            'typo3' => '12.4.0-13.4.99',
+            'php' => '8.2.0-8.4.99',
         ],
     ],
     'autoload' => [

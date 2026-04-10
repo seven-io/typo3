@@ -1,80 +1,70 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Seven\TYPO3\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
-class Model extends AbstractEntity {
-    /** @var string $config */
-    protected $config;
+class Model extends AbstractEntity
+{
+    protected string $config = '';
+    protected int $created = 0;
+    protected ?string $response = null;
+    protected string $type = '';
 
-    /** @var int $created */
-    protected $created;
-
-    /** @var string|null $response */
-    protected $response;
-
-    /** @var string $type */
-    protected $type;
-
-    public function __construct() {
+    public function __construct()
+    {
         $this->created = time();
     }
 
-    /** @return int */
-    public function getCreated(): int {
+    public function getCreated(): int
+    {
         return $this->created;
     }
 
-    /** @return array */
-    public function getConfigArray(): array {
-        return $this->toArray($this->getConfig());
+    public function getConfigArray(): array
+    {
+        return (array)json_decode($this->getConfig(), true);
     }
 
-    private function toArray(string $obj): array {
-        return (array)json_decode($obj);
-    }
-
-    /** @return string */
-    public function getConfig(): string {
+    public function getConfig(): string
+    {
         return $this->config;
     }
 
-    /** @param string|array|object $config */
-    public function setConfig($config): void {
-        $this->config = $this->stringify($config);
+    public function setConfig(string|array|object $config): void
+    {
+        $this->config = is_string($config) ? $config : json_encode($config);
     }
 
-    /**
-     * @param mixed $arg
-     * @return string
-     */
-    private function stringify($arg): string {
-        return is_string($arg) ? $arg : (string)json_encode($arg);
+    public function getResponseArray(): ?array
+    {
+        $response = $this->getResponse();
+        if ($response === null) {
+            return null;
+        }
+
+        return (array)json_decode($response, true);
     }
 
-    /** @return array|null */
-    public function getResponseArray(): ?array {
-        return $this->toArray($this->getResponse());
-    }
-
-    /** @return string|null */
-    public function getResponse(): ?string {
+    public function getResponse(): ?string
+    {
         return $this->response;
     }
 
-    /** @param string $response */
-    public function setResponse(string $response): void {
-        $this->response = $this->stringify($response);
+    public function setResponse(string $response): void
+    {
+        $this->response = is_string($response) ? $response : json_encode($response);
     }
 
-    /** @return string */
-    public function getType(): string {
+    public function getType(): string
+    {
         return $this->type;
     }
 
-    /** @param string $type */
-    public function setType(string $type): void {
+    public function setType(string $type): void
+    {
         $this->type = $type;
     }
 }

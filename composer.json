@@ -16,20 +16,27 @@
     ],
     "keywords": [
         "typo3",
-        "sms"
+        "sms",
+        "seven",
+        "voice",
+        "lookup"
     ],
     "require": {
-        "php": "^7.2",
-        "sms77/api": "v2.6.0",
-        "typo3/cms-backend": "^10.4",
-        "typo3/cms-core": "^10.4",
-        "typo3/cms-extbase": "^10.4",
-        "ext-json": "*",
-        "ext-pdo": "*"
+        "php": "^8.2",
+        "seven.io/api": "^8.1",
+        "typo3/cms-backend": "^12.4 || ^13.4",
+        "typo3/cms-core": "^12.4 || ^13.4",
+        "typo3/cms-extbase": "^12.4 || ^13.4",
+        "ext-json": "*"
     },
     "autoload": {
         "psr-4": {
             "Seven\\TYPO3\\": "Classes/"
+        }
+    },
+    "extra": {
+        "typo3/cms": {
+            "extension-key": "seventypo3"
         }
     }
 }

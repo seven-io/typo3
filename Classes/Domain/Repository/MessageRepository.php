@@ -1,11 +1,15 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Seven\TYPO3\Domain\Repository;
 
-use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
+use TYPO3\CMS\Core\Database\ConnectionPool;
 
-class MessageRepository extends AbstractRepository {
-    public function __construct(ObjectManagerInterface $objectManager) {
-        parent::__construct($objectManager, 'message');
+class MessageRepository extends AbstractRepository
+{
+    public function __construct(ConnectionPool $connectionPool)
+    {
+        parent::__construct($connectionPool, 'message');
     }
 }
